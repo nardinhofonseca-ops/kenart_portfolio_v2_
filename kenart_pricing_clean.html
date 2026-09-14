@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ken Art Studio — Services & Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #19366d;
+  --bright: #00b5fa;
+  --light: #8adeff;
+  --white: #ffffff;
+  --dark: #080f1e;
+  --darker: #04080f;
+  --gray: rgba(255,255,255,0.45);
+  --border: rgba(0,181,250,0.12);
+  --bronze: #CD7F32;
+  --bronze-bg: #1a0e08;
+  --silver: #C0C0C0;
+  --silver-bg: #111118;
+  --gold: #FFD700;
+  --gold-bg: #130f00;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--darker); color: var(--white); overflow-x: hidden; cursor: none; }
+
+.cursor { position: fixed; width: 12px; height: 12px; background: var(--bright); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: screen; transition: width .2s, height .2s; }
+.cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid var(--bright); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); opacity: .5; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(4,8,15,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 36px; border-radius: 6px; }
+.nav-logo span { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--white); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { font-size: 12px; font-weight: 500; color: var(--gray); text-decoration: none; letter-spacing: .12em; text-transform: uppercase; transition: color .2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--bright); transition: width .3s; }
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.back-btn { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white) !important; border: 1.5px solid rgba(255,255,255,.2) !important; padding: 9px 20px; border-radius: 4px; text-decoration: none; transition: all .2s !important; display: flex; align-items: center; gap: 8px; }
+.back-btn:hover { border-color: var(--bright) !important; color: var(--bright) !important; }
+.back-btn::after { display: none !important; }
+.lang-toggle { display: flex; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+.lang-btn { font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--gray); background: transparent; border: none; padding: 6px 12px; cursor: none; transition: all .2s; }
+.lang-btn.active { background: var(--bright); color: var(--darker); }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 60px 80px; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,181,250,0.07) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 10% 80%, rgba(25,54,109,0.3) 0%, transparent 55%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,181,250,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,181,250,0.03) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%); }
+.hero-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--bright), var(--light), transparent); }
+.hero-left-accent { position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--bright), transparent 60%); }
+.hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; }
+.hero-logo-row { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
+.hero-logo-row img { height: 52px; border-radius: 10px; border: 1px solid rgba(0,181,250,0.3); box-shadow: 0 0 40px rgba(0,181,250,0.2); }
+.hero-logo-row span { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; color: var(--bright); text-transform: uppercase; }
+.hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .3em; color: var(--bright); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--bright); }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 10vw, 136px); line-height: .88; letter-spacing: -1px; margin-bottom: 28px; }
+.hero-title .l1 { color: var(--white); display: block; }
+.hero-title .l2 { color: transparent; -webkit-text-stroke: 2px rgba(0,181,250,0.4); display: block; }
+.hero-title .l3 { color: var(--bright); display: block; }
+.hero-desc { font-size: 16px; font-weight: 300; color: var(--gray); line-height: 1.8; max-width: 560px; margin-bottom: 36px; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
+.hero-pill { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: var(--bright); border: 1px solid rgba(0,181,250,0.2); background: rgba(0,181,250,0.04); padding: 8px 16px; border-radius: 2px; }
+.hero-cta { display: flex; gap: 16px; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--darker); background: linear-gradient(90deg, var(--bright), var(--light)); padding: 14px 28px; border-radius: 4px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 0 30px rgba(0,181,250,0.2); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,181,250,0.4); }
+.btn-outline { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--white); border: 1.5px solid rgba(255,255,255,.2); padding: 14px 28px; border-radius: 4px; text-decoration: none; transition: all .2s; }
+.btn-outline:hover { border-color: var(--bright); color: var(--bright); transform: translateY(-2px); }
+
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+section { padding: 120px 0; }
+.section-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .25em; color: var(--bright); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+.section-eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--bright); }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 88px); line-height: .9; letter-spacing: -1px; margin-bottom: 16px; }
+.section-title .outline { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.18); }
+.section-desc { font-size: 15px; font-weight: 300; color: var(--gray); line-height: 1.7; max-width: 520px; margin-bottom: 64px; }
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+#identity { background: var(--dark); }
+.identity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tier-card { position: relative; border-radius: 6px; overflow: hidden; padding: 44px 36px 40px; display: flex; flex-direction: column; transition: transform .3s; }
+.tier-card:hover { transform: translateY(-6px); }
+.tier-card.bronze { background: var(--bronze-bg); border: 1px solid rgba(205,127,50,.25); }
+.tier-card.silver { background: var(--silver-bg); border: 1px solid rgba(192,192,192,.18); }
+.tier-card.gold   { background: var(--gold-bg);   border: 1px solid rgba(255,215,0,.18); }
+.tier-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.bronze .tier-bar { background: linear-gradient(90deg, var(--bronze), transparent); }
+.silver .tier-bar { background: linear-gradient(90deg, var(--silver), transparent); }
+.gold   .tier-bar { background: linear-gradient(90deg, var(--gold), transparent); }
+.tier-bg-letter { position: absolute; top: -30px; right: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 240px; line-height: 1; opacity: .04; pointer-events: none; }
+.bronze .tier-bg-letter { color: var(--bronze); }
+.silver .tier-bg-letter { color: var(--silver); }
+.gold   .tier-bg-letter { color: var(--gold); }
+.tier-name { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 3px; margin-bottom: 4px; }
+.bronze .tier-name { color: var(--bronze); }
+.silver .tier-name { color: var(--silver); }
+.gold   .tier-name { color: var(--gold); }
+.tier-sub { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; color: var(--gray); text-transform: uppercase; margin-bottom: 24px; }
+.tier-price-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .15em; color: rgba(255,255,255,.2); text-transform: uppercase; margin-bottom: 6px; }
+.tier-price { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; margin-bottom: 28px; letter-spacing: -1px; }
+.bronze .tier-price { color: var(--bronze); }
+.silver .tier-price { color: var(--silver); }
+.gold   .tier-price { color: var(--gold); }
+.tier-divider { height: 1px; margin-bottom: 24px; opacity: .15; }
+.bronze .tier-divider { background: var(--bronze); }
+.silver .tier-divider { background: var(--silver); }
+.gold   .tier-divider { background: var(--gold); }
+.tier-items { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.tier-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6); line-height: 1.4; }
+.tier-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+.bronze .tier-dot { background: var(--bronze); }
+.silver .tier-dot { background: var(--silver); }
+.gold   .tier-dot { background: var(--gold); }
+
+#social { background: var(--darker); }
+#motion { background: var(--dark); }
+#merch  { background: var(--darker); }
+.service-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.service-box { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 6px; padding: 40px 36px; position: relative; overflow: hidden; transition: border-color .3s; }
+.service-box:hover { border-color: rgba(0,181,250,.3); }
+.service-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--bright), transparent); }
+.service-box-alt::before { background: linear-gradient(90deg, var(--light), transparent); }
+.service-box-num { position: absolute; bottom: -20px; right: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 180px; color: rgba(255,255,255,.02); pointer-events: none; line-height: 1; }
+.service-box-title { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--white); letter-spacing: 2px; margin-bottom: 4px; }
+.service-box-sub { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--bright); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 28px; }
+.service-box-alt .service-box-sub { color: var(--light); }
+.price-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+.price-row:last-child { border-bottom: none; }
+.price-label { font-size: 14px; font-weight: 300; color: var(--gray); }
+.price-val { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: var(--bright); }
+.service-box-alt .price-val { color: var(--light); }
+
+#closing { background: var(--darker); position: relative; overflow: hidden; text-align: center; }
+#closing::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,181,250,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,181,250,.03) 1px, transparent 1px); background-size: 80px 80px; }
+.closing-glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(0,181,250,.06) 0%, transparent 65%); pointer-events: none; }
+.closing-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 60px; }
+.closing-logo { height: 72px; border-radius: 12px; border: 1px solid rgba(0,181,250,.3); box-shadow: 0 0 60px rgba(0,181,250,.25); margin-bottom: 40px; }
+.closing-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 8vw, 110px); line-height: .9; letter-spacing: -1px; margin-bottom: 24px; }
+.closing-title .bright { color: var(--bright); }
+.closing-divider { width: 60px; height: 2px; background: var(--bright); margin: 0 auto 48px; }
+.terms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 56px; }
+.term-box { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 4px; padding: 22px 20px; text-align: center; }
+.term-title { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .2em; color: var(--bright); text-transform: uppercase; margin-bottom: 10px; }
+.term-val { font-size: 13px; font-weight: 300; color: var(--gray); line-height: 1.5; }
+.contact-row { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+.contact-item { text-align: center; }
+.contact-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .2em; color: rgba(255,255,255,.2); text-transform: uppercase; margin-bottom: 6px; }
+.contact-val { font-size: 14px; font-weight: 500; color: var(--white); }
+.contact-sep { width: 1px; height: 36px; background: rgba(255,255,255,.08); }
+
+footer { background: var(--dark); border-top: 1px solid var(--border); padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-left { font-size: 12px; font-weight: 300; color: var(--gray); }
+.footer-right { font-size: 12px; color: var(--gray); }
+.footer-right span { color: var(--bright); }
+
+@media(max-width:900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  #hero, .section-wrap { padding-left: 24px; padding-right: 24px; }
+  .identity-grid, .service-grid-2, .terms-grid { grid-template-columns: 1fr; }
+  section { padding: 80px 0; }
+  footer { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="kenart_portfolio_v2.html" class="nav-logo">
+    <img src="assets/logo.jpeg" alt="Ken Art">
+    <span>Ken Art Studio</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#identity" data-en="Identity" data-pt="Identidade">Identity</a></li>
+    <li><a href="#social" data-en="Social & Print" data-pt="Social & Print">Social & Print</a></li>
+    <li><a href="#motion" data-en="Motion & Video" data-pt="Motion & Vídeo">Motion & Video</a></li>
+    <li><a href="#merch" data-en="Merch & Web" data-pt="Merch & Web">Merch & Web</a></li>
+    <li><a href="#closing" data-en="Contact" data-pt="Contacto">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('pt')">PT</button>
+    </div>
+    <a href="kenart_portfolio_v2.html" class="back-btn">
+      <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span data-en="Back to Portfolio" data-pt="Voltar ao Portfolio">Back to Portfolio</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-left-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-row">
+      <img src="assets/logo.jpeg" alt="Ken Art">
+      <span data-en="Ken Art Studio — Luanda, Angola" data-pt="Ken Art Studio — Luanda, Angola">Ken Art Studio — Luanda, Angola</span>
+    </div>
+    <div class="hero-eyebrow" data-en="Service Pricing — 2025/2026" data-pt="Tabela de Preços — 2025/2026">Service Pricing — 2025/2026</div>
+    <h1 class="hero-title">
+      <span class="l1" data-en="Creative" data-pt="Serviços">Creative</span>
+      <span class="l2" data-en="Services" data-pt="Criativos">Services</span>
+      <span class="l3" data-en="& Pricing." data-pt="& Preços.">& Pricing.</span>
+    </h1>
+    <p class="hero-desc" data-en="Transparent pricing for bold, strategic and impactful visual solutions. Every project, every budget covered." data-pt="Preços transparentes para soluções visuais ousadas, estratégicas e impactantes. Cada projecto, cada orçamento coberto.">Transparent pricing for bold, strategic and impactful visual solutions. Every project, every budget covered.</p>
+    <div class="hero-pills">
+      <span class="hero-pill" data-en="Visual Identity" data-pt="Identidade Visual">Visual Identity</span>
+      <span class="hero-pill" data-en="Social Media" data-pt="Redes Sociais">Social Media</span>
+      <span class="hero-pill" data-en="Flyers & Print" data-pt="Flyers & Impressão">Flyers & Print</span>
+      <span class="hero-pill" data-en="Motion Design" data-pt="Motion Design">Motion Design</span>
+      <span class="hero-pill" data-en="Video Editing" data-pt="Edição de Vídeo">Video Editing</span>
+      <span class="hero-pill" data-en="Merchandising" data-pt="Merchandising">Merchandising</span>
+      <span class="hero-pill" data-en="Website / UX·UI" data-pt="Website / UX·UI">Website / UX·UI</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#identity" class="btn-primary" data-en="Explore Services" data-pt="Ver Serviços">Explore Services</a>
+      <a href="#closing" class="btn-outline" data-en="Get in Touch" data-pt="Falar Comigo">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL IDENTITY -->
+<section id="identity">
+  <div class="section-wrap">
+    <div class="section-eyebrow fade-up" data-en="01 — Visual Identity" data-pt="01 — Identidade Visual">01 — Visual Identity</div>
+    <h2 class="section-title fade-up" data-en="Brand Identity Packages" data-pt="Pacotes de Identidade Visual">Brand Identity<br><span class="outline">Packages</span></h2>
+    <p class="section-desc fade-up" data-en="Complete brand identity systems designed to position your business with authority and visual consistency." data-pt="Sistemas completos de identidade de marca para posicionar o teu negócio com autoridade e consistência visual.">Complete brand identity systems designed to position your business with authority and visual consistency.</p>
+    <div class="identity-grid">
+      <div class="tier-card bronze fade-up">
+        <div class="tier-bar"></div>
+        <div class="tier-bg-letter">B</div>
+        <div class="tier-name">BRONZE</div>
+        <div class="tier-sub" data-en="Entry Level" data-pt="Nível Base">Entry Level</div>
+        <div class="tier-price-label" data-en="Starting from" data-pt="A partir de">Starting from</div>
+        <div class="tier-price">95.690,00 Kz</div>
+        <div class="tier-divider"></div>
+        <div class="tier-items">
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Logo design (2 concepts)" data-pt="Design de logo (2 conceitos)">Logo design (2 concepts)</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Colour palette" data-pt="Paleta de cores">Colour palette</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Typography selection" data-pt="Selecção de tipografia">Typography selection</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Basic brand guidelines (PDF)" data-pt="Manual de marca básico (PDF)">Basic brand guidelines (PDF)</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Logo files in PNG & SVG" data-pt="Ficheiros do logo em PNG & SVG">Logo files in PNG & SVG</span></div>
+        </div>
+      </div>
+      <div class="tier-card silver fade-up">
+        <div class="tier-bar"></div>
+        <div class="tier-bg-letter">S</div>
+        <div class="tier-name">SILVER</div>
+        <div class="tier-sub" data-en="Professional" data-pt="Profissional">Professional</div>
+        <div class="tier-price-label" data-en="Starting from" data-pt="A partir de">Starting from</div>
+        <div class="tier-price">179.880,00 Kz</div>
+        <div class="tier-divider"></div>
+        <div class="tier-items">
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Everything in Bronze" data-pt="Tudo do Bronze">Everything in Bronze</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Logo (3 concepts + revisions)" data-pt="Logo (3 conceitos + revisões)">Logo (3 concepts + revisions)</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Full brand guidelines" data-pt="Manual de marca completo">Full brand guidelines</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Business card + letterhead" data-pt="Cartão de visita + papel timbrado">Business card + letterhead</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Social media profile kit" data-pt="Kit de perfil para redes sociais">Social media profile kit</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="All formats (AI, PDF, PNG)" data-pt="Todos os formatos (AI, PDF, PNG)">All formats (AI, PDF, PNG)</span></div>
+        </div>
+      </div>
+      <div class="tier-card gold fade-up">
+        <div class="tier-bar"></div>
+        <div class="tier-bg-letter">G</div>
+        <div class="tier-name">GOLD</div>
+        <div class="tier-sub" data-en="Premium" data-pt="Premium">Premium</div>
+        <div class="tier-price-label" data-en="Starting from" data-pt="A partir de">Starting from</div>
+        <div class="tier-price">234.929,00 Kz</div>
+        <div class="tier-divider"></div>
+        <div class="tier-items">
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Everything in Silver" data-pt="Tudo do Silver">Everything in Silver</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Unlimited logo concepts" data-pt="Conceitos de logo ilimitados">Unlimited logo concepts</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Brand identity manual" data-pt="Manual de identidade de marca">Brand identity manual</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Full stationery suite" data-pt="Papelaria completa">Full stationery suite</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Social media templates (5)" data-pt="Templates para redes sociais (5)">Social media templates (5)</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Brand mockups & presentations" data-pt="Mockups & apresentações da marca">Brand mockups & presentations</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Packaging label design" data-pt="Design de label para packaging">Packaging label design</span></div>
+          <div class="tier-item"><div class="tier-dot"></div><span data-en="Priority delivery" data-pt="Entrega prioritária">Priority delivery</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL + FLYERS -->
+<section id="social">
+  <div class="section-wrap">
+    <div class="section-eyebrow fade-up" data-en="02 & 03 — Content & Print" data-pt="02 & 03 — Conteúdo & Impressão">02 & 03 — Content & Print</div>
+    <h2 class="section-title fade-up">Social Media<br><span class="outline" data-en="& Flyers" data-pt="& Flyers">& Flyers</span></h2>
+    <p class="section-desc fade-up" data-en="Scroll-stopping content and bold print materials that make your brand impossible to ignore." data-pt="Conteúdo que prende o scroll e materiais impressos que tornam a tua marca impossível de ignorar.">Scroll-stopping content and bold print materials that make your brand impossible to ignore.</p>
+    <div class="service-grid-2 fade-up">
+      <div class="service-box">
+        <div class="service-box-num">02</div>
+        <div class="service-box-title" data-en="Social Media" data-pt="Redes Sociais">Social Media</div>
+        <div class="service-box-sub" data-en="Content Design" data-pt="Design de Conteúdo">Content Design</div>
+        <div class="price-row"><span class="price-label" data-en="Single post design" data-pt="Design de post individual">Single post design</span><span class="price-val">8.500 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Carousel (5 slides)" data-pt="Carrossel (5 slides)">Carousel (5 slides)</span><span class="price-val">22.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Story template" data-pt="Template de story">Story template</span><span class="price-val">6.500 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Monthly pack (12 posts)" data-pt="Pack mensal (12 posts)">Monthly pack (12 posts)</span><span class="price-val">75.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Monthly pack (20 posts)" data-pt="Pack mensal (20 posts)">Monthly pack (20 posts)</span><span class="price-val">115.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Social media template kit (5)" data-pt="Kit de templates (5)">Social media template kit (5)</span><span class="price-val">35.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Profile + highlight covers" data-pt="Perfil + capas de destaques">Profile + highlight covers</span><span class="price-val">12.000 Kz</span></div>
+      </div>
+      <div class="service-box service-box-alt">
+        <div class="service-box-num">03</div>
+        <div class="service-box-title" data-en="Flyers & Print" data-pt="Flyers & Impressão">Flyers & Print</div>
+        <div class="service-box-sub" data-en="Print Design" data-pt="Design de Impressão">Print Design</div>
+        <div class="price-row"><span class="price-label" data-en="Single flyer / poster (A5)" data-pt="Flyer / poster individual (A5)">Single flyer / poster (A5)</span><span class="price-val">12.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Single flyer / poster (A4)" data-pt="Flyer / poster individual (A4)">Single flyer / poster (A4)</span><span class="price-val">15.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Event flyer pack (3 sizes)" data-pt="Pack de flyers de evento (3 tamanhos)">Event flyer pack (3 sizes)</span><span class="price-val">32.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Billboard design" data-pt="Design de outdoor">Billboard design</span><span class="price-val">45.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Banner design" data-pt="Design de banner">Banner design</span><span class="price-val">18.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Brochure (bi-fold)" data-pt="Brochura (bi-fold)">Brochure (bi-fold)</span><span class="price-val">28.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Brochure (tri-fold)" data-pt="Brochura (tri-fold)">Brochure (tri-fold)</span><span class="price-val">38.000 Kz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTION + VIDEO -->
+<section id="motion">
+  <div class="section-wrap">
+    <div class="section-eyebrow fade-up" data-en="04 & 05 — Motion & Video" data-pt="04 & 05 — Motion & Vídeo">04 & 05 — Motion & Video</div>
+    <h2 class="section-title fade-up">Motion Design<br><span class="outline" data-en="& Video Editing" data-pt="& Edição de Vídeo">& Video Editing</span></h2>
+    <p class="section-desc fade-up" data-en="Animated content and cinematic video production that moves your audience — literally." data-pt="Conteúdo animado e produção de vídeo cinematográfico que move a tua audiência — literalmente.">Animated content and cinematic video production that moves your audience — literally.</p>
+    <div class="service-grid-2 fade-up">
+      <div class="service-box">
+        <div class="service-box-num">04</div>
+        <div class="service-box-title" data-en="Motion Design" data-pt="Motion Design">Motion Design</div>
+        <div class="service-box-sub" data-en="Animation & Motion Graphics" data-pt="Animação & Motion Graphics">Animation & Motion Graphics</div>
+        <div class="price-row"><span class="price-label" data-en="Animated logo (intro/outro)" data-pt="Logo animado (intro/outro)">Animated logo (intro/outro)</span><span class="price-val">35.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Social media animation (15s)" data-pt="Animação para redes sociais (15s)">Social media animation (15s)</span><span class="price-val">28.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Social media animation (30s)" data-pt="Animação para redes sociais (30s)">Social media animation (30s)</span><span class="price-val">45.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Motion graphic reel (60s)" data-pt="Reel de motion graphic (60s)">Motion graphic reel (60s)</span><span class="price-val">75.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Story animation template" data-pt="Template de story animado">Story animation template</span><span class="price-val">18.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Lower thirds / titles pack" data-pt="Pack de lower thirds / títulos">Lower thirds / titles pack</span><span class="price-val">22.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Full animated ad (30s)" data-pt="Anúncio animado completo (30s)">Full animated ad (30s)</span><span class="price-val">85.000 Kz</span></div>
+      </div>
+      <div class="service-box service-box-alt">
+        <div class="service-box-num">05</div>
+        <div class="service-box-title" data-en="Video Editing" data-pt="Edição de Vídeo">Video Editing</div>
+        <div class="service-box-sub" data-en="Post-Production" data-pt="Pós-Produção">Post-Production</div>
+        <div class="price-row"><span class="price-label" data-en="Short reel edit (up to 60s)" data-pt="Edição de reel curto (até 60s)">Short reel edit (up to 60s)</span><span class="price-val">25.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Event highlight (2-3 min)" data-pt="Highlight de evento (2-3 min)">Event highlight (2-3 min)</span><span class="price-val">55.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Product video edit (1-2 min)" data-pt="Edição de vídeo de produto (1-2 min)">Product video edit (1-2 min)</span><span class="price-val">45.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Corporate video (3-5 min)" data-pt="Vídeo corporativo (3-5 min)">Corporate video (3-5 min)</span><span class="price-val">95.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Color grading (per minute)" data-pt="Color grading (por minuto)">Color grading (per minute)</span><span class="price-val">12.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Subtitles / captions" data-pt="Legendas / captions">Subtitles / captions</span><span class="price-val">8.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Thumbnail design" data-pt="Design de thumbnail">Thumbnail design</span><span class="price-val">6.500 Kz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH + WEBSITE -->
+<section id="merch">
+  <div class="section-wrap">
+    <div class="section-eyebrow fade-up" data-en="06 & 07 — Physical & Digital" data-pt="06 & 07 — Físico & Digital">06 & 07 — Physical & Digital</div>
+    <h2 class="section-title fade-up">Merch, Stationery<br><span class="outline" data-en="& Website" data-pt="& Website">& Website</span></h2>
+    <p class="section-desc fade-up" data-en="From physical brand materials to full digital experiences — every touchpoint covered." data-pt="De materiais físicos de marca a experiências digitais completas — cada ponto de contacto coberto.">From physical brand materials to full digital experiences — every touchpoint covered.</p>
+    <div class="service-grid-2 fade-up">
+      <div class="service-box">
+        <div class="service-box-num">06</div>
+        <div class="service-box-title" data-en="Merch & Stationery" data-pt="Merch & Papelaria">Merch & Stationery</div>
+        <div class="service-box-sub" data-en="Physical Brand Materials" data-pt="Materiais Físicos de Marca">Physical Brand Materials</div>
+        <div class="price-row"><span class="price-label" data-en="Business card design" data-pt="Design de cartão de visita">Business card design</span><span class="price-val">12.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Letterhead design" data-pt="Design de papel timbrado">Letterhead design</span><span class="price-val">10.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Full stationery suite" data-pt="Papelaria completa">Full stationery suite</span><span class="price-val">35.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="T-shirt / apparel design" data-pt="Design de t-shirt / vestuário">T-shirt / apparel design</span><span class="price-val">18.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Tote bag design" data-pt="Design de tote bag">Tote bag design</span><span class="price-val">15.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Packaging label design" data-pt="Design de label para packaging">Packaging label design</span><span class="price-val">20.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Packaging dieline + design" data-pt="Dieline + design de packaging">Packaging dieline + design</span><span class="price-val">45.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Product sticker design" data-pt="Design de sticker de produto">Product sticker design</span><span class="price-val">10.000 Kz</span></div>
+      </div>
+      <div class="service-box service-box-alt">
+        <div class="service-box-num">07</div>
+        <div class="service-box-title" data-en="Website / UX·UI" data-pt="Website / UX·UI">Website / UX·UI</div>
+        <div class="service-box-sub" data-en="Design & Development" data-pt="Design & Desenvolvimento">Design & Development</div>
+        <div class="price-row"><span class="price-label" data-en="Landing page (1 page)" data-pt="Landing page (1 página)">Landing page (1 page)</span><span class="price-val">120.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Portfolio website (3-5 pages)" data-pt="Website de portfolio (3-5 páginas)">Portfolio website (3-5 pages)</span><span class="price-val">195.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Business website (5-8 pages)" data-pt="Website empresarial (5-8 páginas)">Business website (5-8 pages)</span><span class="price-val">280.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="E-commerce website" data-pt="Website de e-commerce">E-commerce website</span><span class="price-val">450.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="UI/UX wireframes only" data-pt="Wireframes UI/UX apenas">UI/UX wireframes only</span><span class="price-val">65.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="UI Design (per screen)" data-pt="Design UI (por ecrã)">UI Design (per screen)</span><span class="price-val">15.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Website redesign" data-pt="Redesign de website">Website redesign</span><span class="price-val">150.000 Kz</span></div>
+        <div class="price-row"><span class="price-label" data-en="Monthly maintenance" data-pt="Manutenção mensal">Monthly maintenance</span><span class="price-val">25.000 Kz</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="closing-glow"></div>
+  <div class="closing-inner">
+    <img src="assets/logo.jpeg" class="closing-logo fade-up" alt="Ken Art">
+    <h2 class="closing-title fade-up">
+      <span data-en="Let's create" data-pt="Vamos criar">Let's create</span><br>
+      <span data-en="something " data-pt="algo ">something </span><span class="bright" data-en="bold." data-pt="impactante.">bold.</span>
+    </h2>
+    <div class="closing-divider fade-up"></div>
+    <div class="terms-grid fade-up">
+      <div class="term-box"><div class="term-title" data-en="Payment" data-pt="Pagamento">Payment</div><div class="term-val" data-en="50% upfront — 50% on delivery" data-pt="50% no início — 50% na entrega">50% upfront<br>50% on delivery</div></div>
+      <div class="term-box"><div class="term-title" data-en="Rush Delivery" data-pt="Entrega Urgente">Rush Delivery</div><div class="term-val" data-en="+20% surcharge for urgent projects" data-pt="+20% para projectos urgentes">+20% surcharge<br>for urgent projects</div></div>
+      <div class="term-box"><div class="term-title" data-en="File Formats" data-pt="Formatos de Ficheiro">File Formats</div><div class="term-val" data-en="All formats — AI, PDF, PNG, SVG" data-pt="Todos os formatos — AI, PDF, PNG, SVG">All formats<br>AI, PDF, PNG, SVG</div></div>
+      <div class="term-box"><div class="term-title" data-en="Validity" data-pt="Validade">Validity</div><div class="term-val" data-en="Prices valid for 2025/2026" data-pt="Preços válidos para 2025/2026">Prices valid<br>for 2025/2026</div></div>
+    </div>
+    <div class="contact-row fade-up">
+      <div class="contact-item"><div class="contact-label">Email</div><div class="contact-val">leonardofcbento@outlook.com</div></div>
+      <div class="contact-sep"></div>
+      <div class="contact-item"><div class="contact-label" data-en="Phone" data-pt="Telefone">Phone</div><div class="contact-val">+244 933 756 686</div></div>
+      <div class="contact-sep"></div>
+      <div class="contact-item"><div class="contact-label">Portfolio</div><div class="contact-val">behance.net/leoken1</div></div>
+      <div class="contact-sep"></div>
+      <div class="contact-item"><div class="contact-label">Instagram</div><div class="contact-val">@leoken_20</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left" data-en="© 2026 Ken Art Studio — Leonardo Bento. All rights reserved." data-pt="© 2026 Ken Art Studio — Leonardo Bento. Todos os direitos reservados.">© 2026 Ken Art Studio — Leonardo Bento. All rights reserved.</div>
+  <div class="footer-right"><span data-en="Designed with" data-pt="Desenhado com">Designed with</span> <span>♥</span> <span data-en="in Luanda, Angola" data-pt="em Luanda, Angola">in Luanda, Angola</span></div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px'});
+  (function ar(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ar)})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px'});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px'});
+  });
+
+  // Scroll
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),100)});
+  },{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+  // Language toggle
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelector(`[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const txt = lang==='en' ? el.dataset.en : el.dataset.pt;
+      if(txt) el.innerHTML = txt;
+    });
+    document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el=>{
+      if(lang==='pt'){
+        if(el.placeholder==='Your name') el.placeholder='O teu nome';
+        if(el.placeholder.includes('Tell me')) el.placeholder='Fala-me do teu projecto...';
+      } else {
+        if(el.placeholder==='O teu nome') el.placeholder='Your name';
+        if(el.placeholder.includes('Fala-me')) el.placeholder='Tell me about your project...';
+      }
+    });
+  }
+</script>
+</body>
+</html>
